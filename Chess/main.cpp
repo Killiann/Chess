@@ -51,7 +51,7 @@ int main()
     sf::RectangleShape selectedSquare;
 
     //console setup
-    Console console(bs * tileWidth, 0, &piecesTexture, &boardFont, "Console Output: ");
+    Console console(bs * tileWidth, 0, &piecesTexture, &boardFont, "Moves: ");
 
     //pieces storage?
     std::vector<Pawn> pawns;
@@ -137,37 +137,37 @@ int main()
             if (y > bs / 2) isWhite = true;
             switch (pieceTypeGrid[y][x]) {
             case 1 :
-                pawns.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture);
+                pawns.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture, &console);
                 newPiece = &(pawns.back());
                 pieceGrid[y][x] = (int)pieces.size();
                 pieces.push_back(newPiece);
                 break;
             case 2:
-                rooks.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture);
+                rooks.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture, &console);
                 newPiece = &(rooks.back());
                 pieceGrid[y][x] = (int)pieces.size();
                 pieces.push_back(newPiece);
                 break;
             case 3:
-                knights.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture);
+                knights.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture, &console);
                 newPiece = &(knights.back());
                 pieceGrid[y][x] = (int)pieces.size();
                 pieces.push_back(newPiece);
                 break;
             case 4:
-                bishops.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture);
+                bishops.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture, &console);
                 newPiece = &(bishops.back());
                 pieceGrid[y][x] = (int)pieces.size();
                 pieces.push_back(newPiece);
                 break;
             case 5:
-                queens.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture);
+                queens.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture, &console);
                 newPiece = &(queens.back());
                 pieceGrid[y][x] = (int)pieces.size();
                 pieces.push_back(newPiece);
                 break;
             case 6:
-                kings.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture);
+                kings.emplace_back((int)pieces.size(), x, y, isWhite, &piecesTexture, &console);
                 newPiece = &(kings.back());
                 pieceGrid[y][x] = (int)pieces.size();
                 pieces.push_back(newPiece);
@@ -240,7 +240,6 @@ int main()
                                 for (LITTLE x = 0; x < bs; ++x)
                                     availableMoves[y][x] = 0;
                             selectedPieceId = -1;
-                            console.WriteMessage("Piece Moved", false, false);
                             hasSelected = false;
                         }
                         isClicking = false;

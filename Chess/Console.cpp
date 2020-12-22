@@ -28,7 +28,7 @@ Console::Console(int nx, int ny, sf::Texture* t, sf::Font *f, std::string titleM
 	tm.setFont(*font);
 	tm.setCharacterSize(25);
 	tm.setStyle(tm.Underlined);
-	tm.setStyle(tm.Bold);	
+	tm.setString(titleMessage);
 	tm.setFillColor(baseColor);
 	messages.push_back(tm);
 }
